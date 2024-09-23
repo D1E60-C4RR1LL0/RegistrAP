@@ -23,12 +23,17 @@ export class LoginPage {
 
     // Aquí puedes agregar tu lógica de autenticación.
     // Este es un ejemplo básico que valida el email y password de manera local.
-    if (email === 'profesor@duocuc.cl' && password === 'abc123') {
-      // Si la validación es exitosa, redirige a la página de inicio
+    if ((email === 'profesor@duocuc.cl' && password === 'abc123') ||
+        (email === 'alumno@duocuc.cl' && password === 'abc123')) {
+
+      // Guardar el email en localStorage para su uso posterior
+      localStorage.setItem('userEmail', email);
+
+      // Redirigir a la página de inicio después del login exitoso
       this.router.navigate(['/home']);
     } else {
       // En caso de fallo en la autenticación
-      alert('Invalid credentials');
+      alert('Usuatio Inválido');
     }
   }
 }
