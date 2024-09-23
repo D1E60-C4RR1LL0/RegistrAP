@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Scan QR Code</ion-title>
+    <ion-title>Escanear Código QR</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button expand="full" routerLink="/home">Back to Home</ion-button>
+  <ion-button expand="full" (click)="registrarAsistencia()">Registrar Asistencia</ion-button>
+
+  <div *ngIf="registroExitoso">
+    <p>¡Asistencia registrada con éxito!</p>
+  </div>
+  <ion-button expand="full" routerLink="/home">Volver a Inicio</ion-button>
 </ion-content>

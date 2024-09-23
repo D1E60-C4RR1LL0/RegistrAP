@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-button *ngIf="userRole === 'profesor'" expand="full" routerLink="/qr-code">Generar código QR (Docente)</ion-button>
   <ion-button *ngIf="userRole === 'alumno'" expand="full" routerLink="/scan-qr">Escanear código QR (Estudiante)</ion-button>
-  <ion-button *ngIf="userRole === 'alumno'" expand="full" routerLink="/attendance-history">Ver historial de asistencia</ion-button>
+  <ion-button *ngIf="userRole === 'alumno'" expand="full" routerLink="/asistencia">Ver historial de asistencia</ion-button>
   <ion-button expand="full" routerLink="/perfil">Perfil</ion-button>
   <ion-button expand="full" routerLink="/apk">Descargar APK</ion-button>
   <ion-button expand="block" color="danger" (click)="logout()" fill="clear" shape="round">Cerrar Sesión</ion-button>
