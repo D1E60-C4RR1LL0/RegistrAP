@@ -38,7 +38,12 @@ const routes: Routes = [
   {
     path: 'apk',
     loadChildren: () => import('./pages/apk/apk.module').then( m => m.ApkPageModule)
+  },  {
+    path: 'asisclase',
+    loadChildren: () => import('./pages/asisclase/asisclase.module').then( m => m.AsisclasePageModule)
   },
+
+
 ];
 
 @NgModule({

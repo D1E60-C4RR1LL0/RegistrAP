@@ -21,7 +21,7 @@ export class ScanQrPage implements OnInit {
     const asignatura = 'Matemáticas';
 
     // Navegar a la página de asistencia y pasar los datos usando NavController
-    this.navCtrl.navigateForward('/asistencia', {
+    this.navCtrl.navigateForward('/asisclase', {
       queryParams: {
         nombre: nombre,
         asignatura: asignatura

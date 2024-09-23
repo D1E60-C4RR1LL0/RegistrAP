@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Asistencia de la Clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col><strong>Nombre</strong></ion-col>
+      <ion-col><strong>Asignatura</strong></ion-col>
+      <ion-col><strong>Fecha</strong></ion-col>
+      <ion-col><strong>Hora</strong></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let asistencia of asistencias">
+      <ion-col>{{ asistencia.nombre }}</ion-col>
+      <ion-col>{{ asistencia.asignatura }}</ion-col>
+      <ion-col>{{ asistencia.fecha }}</ion-col>
+      <ion-col>{{ asistencia.hora }}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button expand="full" routerLink="/home">Volver al Inicio</ion-button>
+</ion-content>
