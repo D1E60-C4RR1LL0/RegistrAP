@@ -35,6 +35,10 @@ export class PerfilPage implements OnInit {
       this.userName = 'Daniel Perez';
       this.userRole = 'Estudiante';
       this.userImg = "../../../assets/icon/Daniel.jpg";
+    } else if (userEmail === 'admin@admin.admin'){
+      this.userName = 'Admin';
+      this.userRole = 'Admin';
+      this.userImg = "https://ionicframework.com/docs/img/demos/avatar.svg";
     }
 }
 }

@@ -25,7 +25,8 @@ export class LoginPage {
     
     if ((email === 'julioprofe@duoc.cl' && password === 'abc123') ||
         (email === 'jose.vidal@duocuc.cl' && password === 'abc123') ||
-        (email === 'dani.perez@duocuc.cl' && password === 'abc123')) {
+        (email === 'dani.perez@duocuc.cl' && password === 'abc123') ||
+        (email === 'admin@admin.admin' && password === 'admin123')){
 
       localStorage.setItem('userEmail', email);
 

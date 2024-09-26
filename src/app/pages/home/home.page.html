@@ -1,15 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>¡Bienvenido, {{ userName }}!</ion-title>  </ion-toolbar>
+    <ion-title>¡Bienvenido, {{ userName }}!</ion-title> </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>Esta es tu página de inicio personalizada.</p>
-  <ion-button *ngIf="userRole === 'profesor'" expand="full" routerLink="/qr-code">Generar código QR (Docente)</ion-button>
-  <ion-button *ngIf="userRole === 'profesor'" expand="full" routerLink="/asisclase">Ver asistencia</ion-button>
-  <ion-button *ngIf="userRole === 'alumno'" expand="full" routerLink="/scan-qr">Escanear código QR (Estudiante)</ion-button>
-  <ion-button *ngIf="userRole === 'alumno'" expand="full" routerLink="/asistencia">Ver historial de asistencia</ion-button>
-  <ion-button expand="full" routerLink="/perfil">Perfil</ion-button>
-  <!--< ion-button expand="full" routerLink="/apk">Descargar APK</> -->
-  <ion-button expand="block" color="danger" (click)="logout()" fill="clear" shape="round">Cerrar Sesión</ion-button>
-</ion-content>
+  <div class="button-container">
+    <h1></h1>
+    <ion-button *ngIf="userRole === 'profesor' || userRole === 'admin'" expand="block" routerLink="/qr-code">Generar
+      código QR (Docente)</ion-button>
+    <ion-button *ngIf="userRole === 'profesor' || userRole === 'admin'" expand="block" routerLink="/asisclase">Ver
+      asistencia</ion-button>
+    <ion-button *ngIf="userRole === 'alumno' || userRole === 'admin'" expand="block" routerLink="/scan-qr">Escanear
+      código QR (Estudiante)</ion-button>
+    <ion-button expand="block" routerLink="/perfil">Perfil</ion-button>
+  </div>
+  <ion-text class="centered-text" color="dark">
+    <h1>Si tienes dudas visita:</h1>
+  </ion-text>
+  <div class="button-container">
+    <ion-button expand="block" (click)="goToWebsite('https://experienciavivo.duoc.cl/alumnos')">Portal Duoc</ion-button>
+    <ion-button expand="block" (click)="goToWebsite('https://campusvirtual.duoc.cl/ultra/stream')">AVA</ion-button>
+  </div>
+    <ion-button expand="block" color="danger" (click)="logout()" fill="clear" shape="round">Cerrar Sesión</ion-button>
+    <div class="logo-duoc">    
+      <img src="../../../assets/icon/Logo_DuocUC.png" alt="Logo" class="image-home"/>
+    </div>
+</ion-content>   
+  <!--< ion-button expand="block" routerLink="/apk">Descargar APK</> -->
+  <!--<ion-button *ngIf="userRole === 'alumno'" expand="block" routerLink="/asistencia">Ver historial de asistencia</ion-button> -->

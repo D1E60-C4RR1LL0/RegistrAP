@@ -34,6 +34,9 @@ export class HomePage implements OnInit {
     }else if (userEmail === 'dani.perez@duocuc.cl'){
       this.userRole = 'alumno';
       this.userName = 'Daniel Perez';
+    }else if (userEmail === 'admin@admin.admin'){
+      this.userRole = 'admin';
+      this.userName = 'admin';
     }
   }
   
@@ -42,5 +45,8 @@ export class HomePage implements OnInit {
     //localStorage.removeItem('userEmail'); 
     this.router.navigate(['/login']);
   }
+    goToWebsite(url: string) {
+      window.location.href = url; 
+    }
 
 }

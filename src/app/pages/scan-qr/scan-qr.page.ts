@@ -24,6 +24,8 @@ export class ScanQrPage implements OnInit {
     nombre = 'Josefa Vidal';
   } else if (userEmail === 'dani.perez@duocuc.cl') {
     nombre = 'Daniel Perez';
+  } else if (userEmail === 'admin@admin.admin'){
+    nombre = 'Admin;'
   }
 
   // Navegar a la página de asistencia y pasar los datos
@@ -36,6 +38,5 @@ export class ScanQrPage implements OnInit {
 
     this.registroExitoso = true;
   }
-
 
 }

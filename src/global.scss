@@ -35,3 +35,53 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+ion-content {
+    background-color: #F2F2F2;
+}
+
+ion-header,
+ion-toolbar {
+    --background: #022859;
+    --color: #F2F2F2;
+}
+
+ion-button {
+    --background: #F2A413;
+    --color: #F2F2F2;
+    --border-radius: 8px;
+    --padding: 10px 20px;
+}
+ion-button:active, ion-button.activated {
+    --background: #8C742B; /* Cambiar el color de fondo cuando está activo */
+    --color: #F2F2F2; /* Cambiar el color del texto si es necesario */
+}
+
+ion-button.logout-button {
+    --background: none;
+    --color: #FF0000;
+}
+
+.centered-text {
+    text-align: center;  /* Centra el texto horizontalmente */
+    font-family: 'Roboto', sans-serif; /* Cambiar la fuente a Roboto (puedes cambiarla por la que prefieras) */
+    font-size: 1.5rem; /* Ajusta el tamaño de la fuente */
+    margin-top: 20px; /* Ajusta el margen superior si es necesario */
+}
+
+.logo-duoc {
+    position: fixed;
+    bottom: 0;               /* Fijar la imagen en la parte inferior */
+    left: 0;                 /* Alinearla a la izquierda (puedes cambiar a right si lo prefieres) */
+    width: 100%;             /* Hacer que el contenedor ocupe todo el ancho */
+    text-align: center;      /* Centrar la imagen dentro del contenedor */
+    padding: 10px;           /* Añadir algo de padding para separar la imagen del borde */
+    background-color: #F2F2F2; /* O puedes agregar un color de fondo si es necesario */
+}
+
+.image-home {
+    max-width: 150px;        /* Ajustar el tamaño máximo de la imagen */
+    height: auto;            /* Mantener la proporción de la imagen */
+    opacity: 0.8;            /* Opcional: hacer que la imagen sea un poco transparente */
+}
