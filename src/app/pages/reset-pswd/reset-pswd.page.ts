@@ -1,42 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-reset-pswd',
   templateUrl: './reset-pswd.page.html',
   styleUrls: ['./reset-pswd.page.scss'],
 })
-
 export class ResetPswdPage implements OnInit {
-  resetPasswordForm: FormGroup;
+  resetPasswordForm!: FormGroup;
   passwordsDoNotMatch: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
-    // Crear el formulario con validaciones
+  constructor(private formBuilder: FormBuilder, private toastController: ToastController) {}
+
+  ngOnInit() {
     this.resetPasswordForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],  // Validación para correo electrónico
-      newPassword: ['', [Validators.required, Validators.minLength(6)]],  // Nueva contraseña
-      confirmPassword: ['', [Validators.required]],  // Confirmar contraseña
+      email: ['', [Validators.required, Validators.email]],  
+      newPassword: ['', [Validators.required, Validators.minLength(6)]],  
+      confirmPassword: ['', [Validators.required]]  
+    });
+
+    this.resetPasswordForm.valueChanges.subscribe(() => {
+      const newPassword = this.resetPasswordForm.get('newPassword')?.value;
+      const confirmPassword = this.resetPasswordForm.get('confirmPassword')?.value;
+
+      this.passwordsDoNotMatch = newPassword !== confirmPassword;
     });
   }
 
-  // Método que se ejecuta al enviar el formulario
   onSubmit() {
-    const newPassword = this.resetPasswordForm.get('newPassword')?.value;
-    const confirmPassword = this.resetPasswordForm.get('confirmPassword')?.value;
-
-    // Validar si las contraseñas coinciden
-    if (newPassword !== confirmPassword) {
-      this.passwordsDoNotMatch = true;
-    } else {
-      this.passwordsDoNotMatch = false;
-      // Aquí puedes añadir la lógica para cambiar la contraseña en tu sistema
-      console.log('Formulario enviado con éxito:', this.resetPasswordForm.value);
-      // Ejemplo: Enviar los datos a un servicio para actualizar la contraseña
+    if (!this.passwordsDoNotMatch && this.resetPasswordForm.valid) {
+  // Mostrar el Toast
+      this.presentToast('Se ha enviado un correo para reestablecer tu contraseña');
     }
   }
 
-  ngOnInit() {
+  // Método del Toast
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      position: 'top',
+      color: 'success'
+    });
+    await toast.present();
   }
-
 }

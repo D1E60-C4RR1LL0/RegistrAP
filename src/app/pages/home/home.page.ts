@@ -7,28 +7,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  userName: string = '';
   userRole: string = '';
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    const userEmail = localStorage.getItem('userEmail');
-
-    if (userEmail =='profesor@duocuc.cl'){
-      this.userRole = 'profesor';
-    }else if (userEmail == 'alumno@duocuc.cl'){
-      this.userRole = 'alumno'
-    }
   }
 
+  ionViewWillEnter() {
+    // Este método se ejecuta cada vez que la página esté a punto de cargarse o mostrarse.
+    this.cargarUsuario();
+  }
+
+  cargarUsuario() {
+    const userEmail = localStorage.getItem('userEmail');
+
+
+    
+    if (userEmail === 'julioprofe@duoc.cl') {
+      this.userName = 'Julio';
+      this.userRole = 'profesor';
+    }else if (userEmail === 'jose.vidal@duocuc.cl'){
+      this.userRole = 'alumno';
+      this.userName = 'Josefa Vidal';
+    }else if (userEmail === 'dani.perez@duocuc.cl'){
+      this.userRole = 'alumno';
+      this.userName = 'Daniel Perez';
+    }
+  }
+  
 
   logout() {
-    // Lógica para cerrar sesión
-    localStorage.removeItem('userToken');  // Por ejemplo, eliminar el token de autenticación
-    sessionStorage.clear();  // Limpiar toda la sesión, si es necesario
-
-    // Redirigir a la página de login
+    //localStorage.removeItem('userEmail'); 
     this.router.navigate(['/login']);
   }
 

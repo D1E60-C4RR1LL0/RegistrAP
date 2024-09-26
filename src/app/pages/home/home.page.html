@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Inicio</ion-title>
-  </ion-toolbar>
+    <ion-title>¡Bienvenido, {{ userName }}!</ion-title>  </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <p>Esta es tu página de inicio personalizada.</p>
   <ion-button *ngIf="userRole === 'profesor'" expand="full" routerLink="/qr-code">Generar código QR (Docente)</ion-button>
   <ion-button *ngIf="userRole === 'profesor'" expand="full" routerLink="/asisclase">Ver asistencia</ion-button>
   <ion-button *ngIf="userRole === 'alumno'" expand="full" routerLink="/scan-qr">Escanear código QR (Estudiante)</ion-button>

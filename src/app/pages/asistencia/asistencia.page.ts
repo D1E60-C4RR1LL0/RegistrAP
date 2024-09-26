@@ -9,23 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AsistenciaPage implements OnInit {
 
-   // Lista para almacenar las asistencias
-  asistencias: { nombre: string, asignatura: string, fecha: string, hora: string }[] = [];
+  asistencias: { nombre: string, asignatura: string, fecha: string, hora: string, contador: number  }[] = [];
   constructor(private route: ActivatedRoute) {}
 
-
-  agregarAsistencia(nombre: string, asignatura: string) {
-    const fechaActual = new Date();
-    const nuevaAsistencia = {
-      nombre: nombre,
-      asignatura: asignatura,
-      fecha: fechaActual.toLocaleDateString(),
-      hora: fechaActual.toLocaleTimeString()
-    };
-
-    // Agregar la asistencia a la lista
-    this.asistencias.push(nuevaAsistencia);
-  }  
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -33,9 +19,26 @@ export class AsistenciaPage implements OnInit {
       const asignatura = params['asignatura'];
 
       if (nombre && asignatura) {
-        this.agregarAsistencia(nombre, asignatura);
+        this.registrarAsistencia(nombre, asignatura);
       }
     });
   }
 
-}
+  registrarAsistencia(nombre: string, asignatura: string) {
+    const asistenciaExistente = this.asistencias.find(a => a.nombre === nombre);
+
+    if (asistenciaExistente){
+      asistenciaExistente.contador++;
+    }else{
+    const nuevaAsistencia = {
+      nombre: nombre,
+      asignatura: asignatura,
+      fecha: new Date().toLocaleDateString(),
+      hora: new Date().toLocaleTimeString(),
+      contador: 1
+    };
+        // Agregar la asistencia a la lista
+        this.asistencias.push(nuevaAsistencia);
+      }
+  }
+}  

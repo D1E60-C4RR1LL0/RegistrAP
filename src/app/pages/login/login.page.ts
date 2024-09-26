@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginPage {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private toastController: ToastController) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -21,19 +22,28 @@ export class LoginPage {
     const email = this.loginForm.get('email')?.value;
     const password = this.loginForm.get('password')?.value;
 
-    // Aquí puedes agregar tu lógica de autenticación.
-    // Este es un ejemplo básico que valida el email y password de manera local.
-    if ((email === 'profesor@duocuc.cl' && password === 'abc123') ||
-        (email === 'alumno@duocuc.cl' && password === 'abc123')) {
+    
+    if ((email === 'julioprofe@duoc.cl' && password === 'abc123') ||
+        (email === 'jose.vidal@duocuc.cl' && password === 'abc123') ||
+        (email === 'dani.perez@duocuc.cl' && password === 'abc123')) {
 
-      // Guardar el email en localStorage para su uso posterior
       localStorage.setItem('userEmail', email);
 
-      // Redirigir a la página de inicio después del login exitoso
       this.router.navigate(['/home']);
     } else {
-      // En caso de fallo en la autenticación
-      alert('Usuatio Inválido');
+      // Mostrar el Toast
+      this.presentToast('Correo o Contraseña inválidas. Inténtalo de nuevo.');
     }
+  }
+
+  // Método del Toast
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1000,
+      position: 'top',
+      color: 'danger'
+    });
+    await toast.present();
   }
 }

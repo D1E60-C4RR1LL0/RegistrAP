@@ -16,17 +16,23 @@ export class ScanQrPage implements OnInit {
 
    // Método para registrar la asistencia
   registrarAsistencia() {
-    // Aquí puedes agregar la lógica para obtener los datos de nombre y asignatura del escaneo QR o manualmente
-    const nombre = 'Alumno Ejemplo';
-    const asignatura = 'Matemáticas';
+    const userEmail = localStorage.getItem('userEmail');
+    let nombre = '';
+    let asignatura = 'Programación';
 
-    // Navegar a la página de asistencia y pasar los datos usando NavController
-    this.navCtrl.navigateForward('/asisclase', {
-      queryParams: {
-        nombre: nombre,
-        asignatura: asignatura
-      }
-    });
+  if (userEmail === 'jose.vidal@duocuc.cl') {
+    nombre = 'Josefa Vidal';
+  } else if (userEmail === 'dani.perez@duocuc.cl') {
+    nombre = 'Daniel Perez';
+  }
+
+  // Navegar a la página de asistencia y pasar los datos
+  this.navCtrl.navigateForward('/asisclase', {
+    queryParams: {
+      nombre: nombre,
+      asignatura: asignatura
+    }
+  });
 
     this.registroExitoso = true;
   }
